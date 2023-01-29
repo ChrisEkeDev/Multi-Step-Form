@@ -7,13 +7,166 @@
     <title>Multi Step Form</title>
   </head>
   <body>
+    <header id="form-header">
+      <div class="form-section_node">1</div>
+      <div class="form-section_node">2</div>
+      <div class="form-section_node">3</div>
+      <div class="form-section_node">4</div>
+    </header>
     <main>
       <form action="/" method="post">
-        <section></section>
-        <section></section>
-        <section></section>
-        <section></section>
+        <section id="form-section_1">
+          <fieldset>
+            <legend>Personal Info</legend>
+            <p>Please provide your name, email address, and phone number.</p>
+            <div>
+              <label for="full_name">Name</label>
+              <input
+                type="text"
+                id="full_name"
+                name="full_name"
+                placeholder="e.g. John Smith"
+              />
+            </div>
+            <div>
+              <label for="email_address">Name</label>
+              <input
+                type="email"
+                id="email_address"
+                name="email_address"
+                placeholder="e.g. johnsmith@email.com"
+              />
+            </div>
+            <div>
+              <label for="phone_number">Name</label>
+              <input
+                type="tel"
+                id="phone_number"
+                name="phone_number"
+                placeholder="e.g. 123 456 7890"
+              />
+            </div>
+          </fieldset>
+        </section>
+        <section id="form-section_2">
+          <fieldset>
+            <legend>Select your plan</legend>
+            <p>You have the option of monthly or yearly billing.</p>
+            <div id="radio-arcade_plan" class="plan-radio_group">
+              <input
+                type="radio"
+                id="radio-arcade_plan"
+                name="select_plan"
+                value="Arcade"
+              />
+              <img class="radio_img" />
+              <div class="radio_info">
+                <label for="radio-arcade_plan">Arcade</label>
+                <p class="arcade-price">$9/month</p>
+                <p class="plan_deal">2 months free</p>
+              </div>
+            </div>
+            <div id="radio-advanced_plan" class="plan-radio_group">
+              <input
+                type="radio"
+                id="radio-advanced_plan"
+                name="select_plan"
+                value="Advanced"
+              />
+              <img class="radio_img" />
+              <div class="radio_info">
+                <label for="radio-advanced_plan">Advanced</label>
+                <p class="advanced-price">$12/month</p>
+                <p class="plan_deal">2 months free</p>
+              </div>
+            </div>
+            <div class="plan-radio_group">
+              <input
+                type="radio"
+                id="radio-pro_plan"
+                name="select_plan"
+                value="Pro"
+              />
+              <img class="radio_img" />
+              <div class="radio_info">
+                <labe for="radio-pro_plan">Pro</label>
+                <p class="pro-price">$15/month</p>
+                <p class="plan_deal">2 months free</p>
+              </div>
+            </div>
+            <div class="plan_type">
+              <p class="plan_type-monthly">Monthly</p>
+              <div class="plan_node-container">
+                <div class="plan_node"></div>
+              </div>
+              <p class="plan_type-monthly">Yearly</p>
+            </div>
+          </fieldset>
+        </section>
+        <section id="form-section_3">
+          <fieldset>
+            <legend>Pick add-ons</legend>
+            <p>Add-ones help to enhance your gaming experience.</p>
+            <div class="checkbox_group">
+                <input type="checkbox" id="add_on-online_service"/>
+                <div>
+                    <label for="add_on-online_service">Online service</label>
+                    <p>Accsess to multiplayer games</p>
+                </div>
+                <p class="add_on-price">+1/month</p>
+            </div>
+            <div class="checkbox_group">
+                <input type="checkbox" id="add_on-larger_storage"/>
+                <div>
+                    <label for="add_on-larger_storage">Larger storage</label>
+                    <p>Extra 1TB of clound save</p>
+                </div>
+                <p class="add_on-price">+2/month</p>
+            </div>
+            <div class="checkbox_group">
+                <input type="checkbox" id="add_on-customizable_profile"/>
+                <div>
+                    <label for="add_on-customizable_profile">Customizable Profile</label>
+                    <p>Custom theme on your profile</p>
+                </div>
+                <p class="add_on-price">+2/month</p>
+            </div>
+          </fieldset>
+        </section>
+        <section id="form-section_4">
+          <fieldset>
+            <legend>Finishing Up</legend>
+            <p>Double-check everything looks OK before confirming.</p>
+            <div class="form_details">
+                <div class="form_details-plan_type flex-row-space">
+                    <div class="flex-col">
+                        <p class="form_details-plan_title"></p>
+                        <button class="link_btn underlined">Change</button>
+                    </div>
+                    <p class="form_details-plan_price"></p>
+                </div>
+            </div>
+            <div class="form_total">
+                <p class="detail_label">Total (per month)</p>
+                <p class="detail_total"></p>
+            </div>
+          </fieldset>
+        </section>
       </form>
     </main>
+    <footer id="form-footer">
+      <button class="link_btn go_back">Go back</button>
+      <button class="btn next_step">Next Step</button>
+    </footer>
+
+    <div id="form_completion">
+        <img class="completion_img">
+        <p class="completion_title">Thank You!</p>
+        <p class="completion_text">Thanks for confirming your subscription!
+            We hope you have fun using our platform. If you
+            ever need support, please feel free to email
+            us at support@loremgaming.com.
+        </p>
+    </div>
   </body>
 </html>
