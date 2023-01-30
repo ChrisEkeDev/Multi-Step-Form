@@ -1,7 +1,5 @@
 # Multi-step form
 
-![Design preview for the Multi-step form coding challenge](./design/desktop-preview.jpg)
-
 ## The challenge
 
 Users should be able to:
