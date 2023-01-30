@@ -142,7 +142,9 @@ section {
         font-weight: 500;
     }
 
-    .form_input input {
+    .full_name-input,
+    .email_address-input,
+    .phone_number-input {
         margin: 6px 0;
         padding: 12px;
         border-radius: 5px;
@@ -443,5 +445,27 @@ section {
         color: #9699AB;
         padding: 0 12px;
         line-height: 1.6;
+    }
+
+    .error_input {
+        border: 1px solid #ED3548;
+    }
+    .screen_one_errors,
+    .screen_two_errors {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding-bottom: 12px;
+    }
+
+    .error {
+        color: #ED3548;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+    }
+    .error_icon {
+        height: 16px;
     }
 }

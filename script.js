@@ -2,6 +2,11 @@ let section = 1;
 let scrollPosition = 0;
 let formContainer = document.getElementById('form_container');
 let screenWidth = window.innerWidth;
+let nameField = document.querySelector('.full_name-input');
+let emailField = document.querySelector('.email_address-input');
+let phoneField = document.querySelector('.phone_number-input');
+let screenOneErrorContainer = document.querySelector('.screen_one_errors');
+let screenTwoErrorContainer = document.querySelector('.screen_two_errors');
 let nextButton = document.querySelector('.next_step');
 let prevButton = document.querySelector('.go_back');
 let sectionNodes = document.querySelectorAll('.form-section_node');
@@ -29,12 +34,129 @@ let customProfilePrice = document.querySelector('.cp_price');
 let summaryPlanLabel = document.querySelector('.form_details-plan_title');
 let summaryPlanPrice = document.querySelector('.form_details-plan_price')
 let addOnsContainer = document.querySelector('.add_ons_container')
-let selectedPlan = {};
+let selectedPlan;
 let selectedAddOns = [];
+let screenOneErrors = [];
+let screenTwoErrors = [];
 let totalPrice = document.querySelector('.detail_total');
 let totalPriceLabel = document.querySelector('.detail_label');
 
+function populateScreenOneErrors() {
+    screenOneErrors.forEach(function(error) {
+        let errCont = document.createElement('div');
+        let errIcon = document.createElement('img');
+        let errText = document.createElement('p');
+        errCont.classList.add('error');
+        errIcon.setAttribute('src', 'assets/images/icon-error-alert.svg')
+        errIcon.classList.add('error_icon');
+        errText.innerHTML = error.message;
+        errCont.append(errIcon, errText);
+        screenOneErrorContainer.append(errCont)
+    })
+}
 
+function populateScreenTwoErrors() {
+    screenTwoErrors.forEach(function(error) {
+        let errCont = document.createElement('div');
+        let errIcon = document.createElement('img');
+        let errText = document.createElement('p');
+        errCont.classList.add('error');
+        errIcon.setAttribute('src', 'assets/images/icon-error-alert.svg')
+        errIcon.classList.add('error_icon');
+        errText.innerHTML = error.message;
+        errCont.append(errIcon, errText);
+        screenTwoErrorContainer.append(errCont)
+    })
+}
+
+function clearScreenOneErrors() {
+    screenOneErrorContainer.replaceChildren()
+}
+
+function clearScreenTwoErrors() {
+    screenTwoErrorContainer.replaceChildren()
+}
+
+function validateScreenTwo() {
+    let valid = false;
+    if (!selectedPlan) {
+        let error = {
+            field: 'plan',
+            message: 'Please select a plan.'
+        }
+        if (!screenTwoErrors.some(function(err) {err.field === 'plan'})) {
+            screenTwoErrors = [...screenTwoErrors, error]
+        }
+    } else {
+        screenTwoErrors = screenTwoErrors.filter(err => err.field !== 'plan');
+        valid = true;
+    }
+    if (valid) {
+        clearScreenTwoErrors()
+        return true
+    } else {
+        populateScreenTwoErrors()
+        return false;
+    }
+}
+
+
+function validateScreenOne() {
+    screenOneErrors = [];
+    let nameValid = false;
+    let emailValid = false;
+    let phoneValid = false;
+    let emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if (nameField.value.length === 0) {
+        nameField.classList.add('error_input');
+        let nameError = {
+            field: 'full_name',
+            message: 'Please enter a name.'
+        }
+        if (!screenOneErrors.some(function(err) {err.field === 'full_name'})) {
+            screenOneErrors = [...screenOneErrors, nameError]
+        }
+    } else {
+        screenOneErrors = screenOneErrors.filter(err => err.field !== 'full_name');
+        nameField.classList.remove('error_input');
+        nameValid = true;
+    }
+    if (!emailField.value.match(emailRegex)) {
+        emailField.classList.add('error_input');
+        let emailError = {
+            field: 'email_Address',
+            message: 'Please enter a valid email address.'
+        }
+        if (!screenOneErrors.some(function(err) {err.field === 'email_address'})) {
+            screenOneErrors = [...screenOneErrors, emailError]
+        }
+    } else {
+        screenOneErrors = screenOneErrors.filter(err => err.field !== 'email_address');
+        emailField.classList.remove('error_input');
+        emailValid = true;
+    }
+    if (phoneField.value.length < 7) {
+        phoneField.classList.add('error_input');
+        let phoneError = {
+            field: 'phone_number',
+            message: 'Please enter a valid phone number.'
+        }
+        if (!screenOneErrors.some(function(err) {err.field === 'phone_number'})) {
+            screenOneErrors = [...screenOneErrors, phoneError]
+        }
+    } else {
+        screenOneErrors = screenOneErrors.filter(err => err.field !== 'phone_number');
+        phoneField.classList.remove('error_input');
+        phoneValid = true;
+    }
+    if (nameValid && emailValid && phoneValid) {
+        clearScreenOneErrors()
+        return true
+    } else {
+        populateScreenOneErrors()
+        return false;
+    }
+}
 
 window.onload = checkScreen();
 window.onload = sectionNodes[section - 1].classList.add('active_node');
@@ -59,15 +181,32 @@ function checkScreen() {
         node.classList.remove('active_node');
     })
     sectionNodes[section - 1].classList.add('active_node');
-
 }
-function nextSection() {
-    if (section === 5) {
-        return
-    }
+
+function goToNextSection() {
     formContainer.style.transform = "translateX(" + -(scrollPosition + screenWidth) + "px" + ")";
     section += 1;
     scrollPosition += screenWidth;
+}
+function nextSection() {
+    switch(section) {
+        case 1: {
+            if (validateScreenOne()) {
+                goToNextSection()
+            }
+        };
+        break;
+        case 2: {
+            if (validateScreenTwo()) {
+                goToNextSection();
+            }
+        };
+        break;
+        case 3: goToNextSection(); break;
+        case 4: goToNextSection(); break;
+        case 5: return;
+        default: break;
+    }
 }
 
 
