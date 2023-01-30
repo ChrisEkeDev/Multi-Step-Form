@@ -15,12 +15,44 @@
   </head>
   <body>
     <nav id="form-header">
-      <div class="form-section_node">1</div>
-      <div class="form-section_node">2</div>
-      <div class="form-section_node">3</div>
-      <div class="form-section_node">4</div>
-      <div class="form-section_node">
-        <img src="assets/images/icon-checkmark.svg" />
+      <div class="bg-img">
+        <div class="node_container">
+          <div class="form-section_node">1</div>
+          <div class="node_details">
+            <p>Step 1</p>
+            <p>Your Info</p>
+          </div>
+        </div>
+        <div class="node_container">
+          <div class="form-section_node">2</div>
+          <div class="node_details">
+            <p>Step 2</p>
+            <p>Select Plan</p>
+          </div>
+        </div>
+        <div class="node_container">
+          <div class="form-section_node">3</div>
+          <div class="node_details">
+            <p>Step 3</p>
+            <p>Add-ons</p>
+          </div>
+        </div>
+        <div class="node_container">
+          <div class="form-section_node">4</div>
+          <div class="node_details">
+            <p>Step 4</p>
+            <p>Summary</p>
+          </div>
+        </div>
+        <div class="node_container">
+          <div class="form-section_node">
+            <img src="assets/images/icon-checkmark.svg" />
+          </div>
+          <div class="node_details">
+            <p>Step 5</p>
+            <p>Complete!</p>
+          </div>
+        </div>
       </div>
     </nav>
     <main>
@@ -70,51 +102,56 @@
             <p class="fieldset_details">
               You have the option of monthly or yearly billing.
             </p>
-            <label for="radio-arcade_plan" class="plan-radio_group arcade_plan">
-              <input
-                type="radio"
-                id="radio-arcade_plan"
-                name="select_plan"
-                value="Arcade"
-              />
-              <img class="radio_img" src="assets/images/icon-arcade.svg" />
-              <div class="radio_info">
-                <p class="plan_label">Arcade</p>
-                <p class="plan_price arcade_price">$9/mo</p>
-                <p class="plan_deal hidden">2 months free</p>
-              </div>
-            </label>
-            <label
-              for="radio-advanced_plan"
-              class="plan-radio_group advanced_plan"
-            >
-              <input
-                type="radio"
-                id="radio-advanced_plan"
-                name="select_plan"
-                value="Advanced"
-              />
-              <img class="radio_img" src="assets/images/icon-advanced.svg" />
-              <div class="radio_info">
-                <p class="plan_label">Advanced</p>
-                <p class="plan_price advanced_price">$12/mo</p>
-                <p class="plan_deal hidden">2 months free</p>
-              </div>
-            </label>
-            <label for="radio-pro_plan" class="plan-radio_group pro_plan">
-              <input
-                type="radio"
-                id="radio-pro_plan"
-                name="select_plan"
-                value="Pro"
-              />
-              <img class="radio_img" src="assets/images/icon-pro.svg" />
-              <div class="radio_info">
-                <p class="plan_label">Pro</p>
-                <p class="plan_price pro_price">$15/mo</p>
-                <p class="plan_deal hidden">2 months free</p>
-              </div>
-            </label>
+            <div class="radios_container">
+              <label
+                for="radio-arcade_plan"
+                class="plan-radio_group arcade_plan"
+              >
+                <input
+                  type="radio"
+                  id="radio-arcade_plan"
+                  name="select_plan"
+                  value="Arcade"
+                />
+                <img class="radio_img" src="assets/images/icon-arcade.svg" />
+                <div class="radio_info">
+                  <p class="plan_label">Arcade</p>
+                  <p class="plan_price arcade_price">$9/mo</p>
+                  <p class="plan_deal hidden">2 months free</p>
+                </div>
+              </label>
+              <label
+                for="radio-advanced_plan"
+                class="plan-radio_group advanced_plan"
+              >
+                <input
+                  type="radio"
+                  id="radio-advanced_plan"
+                  name="select_plan"
+                  value="Advanced"
+                />
+                <img class="radio_img" src="assets/images/icon-advanced.svg" />
+                <div class="radio_info">
+                  <p class="plan_label">Advanced</p>
+                  <p class="plan_price advanced_price">$12/mo</p>
+                  <p class="plan_deal hidden">2 months free</p>
+                </div>
+              </label>
+              <label for="radio-pro_plan" class="plan-radio_group pro_plan">
+                <input
+                  type="radio"
+                  id="radio-pro_plan"
+                  name="select_plan"
+                  value="Pro"
+                />
+                <img class="radio_img" src="assets/images/icon-pro.svg" />
+                <div class="radio_info">
+                  <p class="plan_label">Pro</p>
+                  <p class="plan_price pro_price">$15/mo</p>
+                  <p class="plan_deal hidden">2 months free</p>
+                </div>
+              </label>
+            </div>
             <div class="plan_type_container">
               <p class="plan_type plan_monthly active_plan">Monthly</p>
               <div class="plan_node-container on_monthly">

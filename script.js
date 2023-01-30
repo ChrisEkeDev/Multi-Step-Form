@@ -1,7 +1,7 @@
 let section = 1;
 let scrollPosition = 0;
 let formContainer = document.getElementById('form_container');
-let screenWidth = window.innerWidth;
+let offset = formContainer.offsetWidth / 5;
 let nameField = document.querySelector('.full_name-input');
 let emailField = document.querySelector('.email_address-input');
 let phoneField = document.querySelector('.phone_number-input');
@@ -184,9 +184,9 @@ function checkScreen() {
 }
 
 function goToNextSection() {
-    formContainer.style.transform = "translateX(" + -(scrollPosition + screenWidth) + "px" + ")";
+    formContainer.style.transform = "translateX(" + -(scrollPosition + offset) + "px" + ")";
     section += 1;
-    scrollPosition += screenWidth;
+    scrollPosition += offset;
 }
 function nextSection() {
     switch(section) {
@@ -214,16 +214,16 @@ function prevSection() {
     if ( section === 1) {
         return
     }
-    formContainer.style.transform = "translateX(" + -(scrollPosition - screenWidth) + "px" + ")";
+    formContainer.style.transform = "translateX(" + -(scrollPosition - offset) + "px" + ")";
     section -= 1;
-    scrollPosition -= screenWidth;
+    scrollPosition -= offset;
 
 }
 
 changePlanBtn.addEventListener('click', function() {
-    formContainer.style.transform = "translateX(" + -(scrollPosition - (screenWidth* 2)) + "px" + ")";
+    formContainer.style.transform = "translateX(" + -(scrollPosition - (offset* 2)) + "px" + ")";
     section -= 2;
-    scrollPosition -= (screenWidth * 2);
+    scrollPosition -= (offset * 2);
     checkScreen();
 })
 
