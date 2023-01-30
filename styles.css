@@ -1,0 +1,447 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #F0F6FF;
+}
+
+* {
+    box-sizing: border-box;
+    transition: all .2s;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, label, legend {
+    margin: 0;
+}
+
+form {
+    width: 500vw;
+    display: flex;
+    flex: 1;
+
+}
+
+.flex-row-space {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 4px;
+}
+section {
+    width: 100vw;
+}
+
+#form_completion {
+    display: none;
+    position: absolute;
+}
+
+.active_node {
+    background-color: #ADBEFF;
+    color: #02295A;
+    border: none;
+}
+.form-section_node {
+    opacity: 1;
+}
+
+.disabled_btn {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@media screen and (max-width: 425px) {
+
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+    main {
+        flex: 1;
+    }
+    footer {
+        background-color: #FAFBFF;
+        padding: 16px;
+    }
+    nav {
+        display: flex;
+        justify-content: center;
+        background-image: url('assets/images/bg-sidebar-mobile.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        gap: 16px;
+        padding: 24px 0 105px 0;
+        position: absolute;
+        width: 100%;
+    }
+
+    nav div {
+        border: 1px solid white;
+        color: white;
+        height: 32px;
+        width: 32px;
+        border-radius: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 14px;
+    }
+    main {
+        z-index: 50;
+        padding: 100px 0 0 0;
+    }
+    form {
+        position: relative;
+        top: -3px;
+    }
+
+    fieldset {
+        padding: 0;
+        border: none;
+        margin: 0;
+    }
+    section {
+        background-color: white;
+        position: relative;
+        margin: 0 1%;
+        border-radius: 10px;
+        box-shadow: 0 5px 25px rgba(0,0,0,.05);
+        padding: 36px 24px 12px 24px;
+    }
+
+    legend {
+        font-size: 24px;
+        font-weight: 700;
+        color: #02295A;
+        margin-bottom: 12px;
+    }
+    .fieldset_details {
+        color: #9699AB;
+        margin-bottom: 24px;
+        font-size: 16px;
+    }
+    .form_input {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 12px;
+    }
+
+    .form_input label {
+        font-size: 11px;
+        color: #02295A;
+        font-weight: 500;
+    }
+
+    .form_input input {
+        margin: 6px 0;
+        padding: 12px;
+        border-radius: 5px;
+        font-size: 14px;
+        border: 1px solid #D6D9E6;
+    }
+    .form_input input:focus {
+        outline: none;
+        border: 1px solid #473DFF;
+    }
+
+    .form_input input::placeholder {
+        color: #9699AB;
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    #form-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .btn {
+        padding: 12px 12px;
+        background-color: #02295A;
+        border-radius: 5px;
+        color: white;
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+    .link_btn {
+        border: none;
+        background-color: transparent;
+        color: #9699AB;
+        font-weight: 500;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .plan-radio_group {
+        border: 1px solid #D6D9E6;
+        display: flex;
+        align-items: flex-start;
+        padding: 16px;
+        border-radius: 10px;
+        margin-bottom: 12px;
+        gap: 12px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        cursor: pointer;
+    }
+
+    .checkbox_group {
+        border: 1px solid #D6D9E6;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px;
+        border-radius: 10px;
+        margin-bottom: 12px;
+        gap: 12px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        cursor: pointer;
+    }
+    .plan-radio_group:hover,
+    .checkbox_group:hover {
+        background-color: #FAFBFF;
+    }
+
+    .selected_plan {
+        background-color: #FAFBFF;
+        border: 1px solid #02295A;
+    }
+
+    .selected_add_on {
+        background-color: #FAFBFF;
+        border: 1px solid #02295A;
+    }
+
+    .plan-radio_group input,
+    .checkbox_group input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .checkbox_square {
+        height: 18px;
+        width: 18px;
+        flex-shrink: 0;
+        border-radius: 4px;
+        border: 1px solid #D6D9E6;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .checked_square {
+        border: none;
+        background-color: #473DFF;
+    }
+
+    .checkbox_group .add_on-label {
+        font-size: 14px;
+        color: #02295A;
+        font-weight: 700;
+    }
+
+    .checkbox_group .add_on-detail {
+        font-size: 11px;
+        color: #9699AB;
+        font-weight: 500;
+    }
+
+    .checkbox_group .add_on-price {
+        font-size: 11px;
+        color: #473DFF;
+        font-weight: 500;
+    }
+
+    .checkbox_info_container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        flex: 1;
+    }
+    .plan-radio_group .radio_info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .plan-radio_group .plan_label {
+        font-size: 14px;
+        color: #02295A;
+        font-weight: 700;
+    }
+
+    .plan-radio_group .plan_price {
+        font-size: 11px;
+        color: #9699AB;
+        font-weight: 500;
+    }
+
+    .plan-radio_group .plan_deal {
+        font-size: 11px;
+        color: #02295A;
+        font-weight: 500;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .plan_type_container {
+        background-color: #FAFBFF;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 16px;
+        gap: 16px;
+        margin: 24px 0;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .plan_type {
+        font-size: 14px;
+        width: 40%;
+    }
+
+    .plan_monthly {
+        text-align: right;
+    }
+
+    .active_plan {
+        color: #02295A;
+        font-weight: 700;
+    }
+
+    .inactive_plan {
+        color: #9699AB;
+        font-weight: 700;
+    }
+
+    .plan_node-container {
+        height: 20px;
+        width: 40px;
+        border-radius: 20px;
+        background-color: #02295A;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0 4px;
+
+    }
+
+    .plan_node {
+        height: 12px;
+        width: 12px;
+        border-radius: 12px;
+        background-color: white;
+    }
+
+    .on_yearly {
+        justify-content: flex-end;
+    }
+
+    .form_details {
+        background-color: #FAFBFF;
+        padding: 16px;
+        border-radius: 5px;
+        margin-bottom: 24px;
+    }
+
+    .form_details-plan_title,
+    .form_details-plan_price
+     {
+        font-size: 14px;
+        color: #02295A;
+        font-weight: 700;
+    }
+    .add_on_summary_label {
+        font-size: 14px;
+        color: #9699AB;
+    }
+
+    .add_on_summary_price {
+        font-size: 14px;
+        color: #02295A;
+    }
+
+    .underlined {
+        text-decoration: underline;
+    }
+
+    .add_ons_container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .add_ons_with_items {
+        margin-top: 12px;
+        padding: 16px 0;
+        border-top: 1px solid #D6D9E6;
+    }
+
+    .form_total {
+        padding: 0 16px;
+    }
+    .detail_label {
+        font-size: 14px;
+        color: #9699AB;
+    }
+
+    .detail_total {
+        font-size: 16px;
+        color: #473DFF;
+        font-weight: 700;
+    }
+
+    .submit_btn {
+        background-color: #473DFF;
+        border: none;
+    }
+
+    #form-section_5 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .completion_img {
+        height: 60px;
+        margin-bottom: 12px;
+    }
+
+    .completion_title {
+        font-size: 24px;
+        color: #02295A;
+        font-weight: 700;
+
+    }
+
+    .completion_text {
+        font-size: 18px;
+        color: #9699AB;
+        padding: 0 12px;
+        line-height: 1.6;
+    }
+}
